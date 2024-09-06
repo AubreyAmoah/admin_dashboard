@@ -8,12 +8,16 @@ import {
   faShoppingBasket,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({isVisible}) => {
   return (
-    <div className="w-64 bg-gray-100 min-h-screen p-5">
+    <div
+      className={`w-64 bg-gray-100 min-h-screen p-5 max-md:w-full ${
+        isVisible === false ? "max-md:hidden" : "max-md:sticky"
+      } max-md:top-0 max-md:left-0`}
+    >
       <h1 className="text-2xl font-bold">Dashboard</h1>
       <ul className="mt-10">
         <li className="mb-6">

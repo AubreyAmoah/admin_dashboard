@@ -15,18 +15,25 @@ import Notifications from "./components/Notifications";
 import Payments from "./components/Payment";
 import Items from "./components/Items";
 import ItemSales from "./components/ItemSales";
+import SideBarToggle from "./components/SideBarToggle";
 
 const App = () => {
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
   return (
-    <div className="flex">
+    <div className="flex max-md:flex-col">
       <BrowserRouter>
-        <Sidebar />
-        <div className="flex-1 p-10">
+        <SideBarToggle isVisible={isVisible} toggleVisible={toggleVisibility} />
+        <Sidebar isVisible={isVisible} />
+        <div className="flex-1 p-10 max-md:p-5 max-sm:px-0">
           <Routes>
             <Route
               path="/"
               element={
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-3 gap-6 max-[1120px]:grid-cols-2 max-[950px]:grid-cols-1">
                   <RevenueChart />
                   <InsightsWidget />
                   <SalesWidget />
